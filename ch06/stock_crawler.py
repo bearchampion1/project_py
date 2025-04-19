@@ -6,11 +6,11 @@ all_list = []
 stock_symbol, dates = m.get_data()
 
 for date in dates:
-    sleep(5)
+    sleep(1)
     try:
         crawler_data = m.crawl_data(date, stock_symbol)
         all_list.append(crawler_data[0])
-        df_columns = crawler_data[1]
+        df_columns = crawler_data[0]
         print("  OK!  date = " + date + " ,stock symbol = " + stock_symbol)
     except:
         print("error! date = " + date + " ,stock symbol = " + stock_symbol)

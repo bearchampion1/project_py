@@ -9,7 +9,7 @@ all_list = []
 stock_symbol, dates = m.get_data()
 
 for date in dates:
-    sleep(5)
+    sleep(2)
     try:
         crawler_data = m.crawl_data(date, stock_symbol)
         all_list.append(crawler_data[0])
@@ -22,10 +22,10 @@ all_df = pd.DataFrame(all_list, columns=df_columns)
 
 # step 1 prepare data
 day = all_df["日期"].astype(str)
-openprice = all_df["開盤價"].astype(float)
-close = all_df["收盤價"].astype(float)
-high = all_df["最高價"].astype(float)
-low = all_df["最低價"].astype(float)
+openprice = all_df["開盤價"].str.replace(",", "", regex=False).astype(float)
+close = all_df["收盤價"].str.replace(",", "", regex=False).astype(float)
+high = all_df["最高價"].str.replace(",", "", regex=False).astype(float)
+low = all_df["最低價"].str.replace(",", "", regex=False).astype(float)
 volume = all_df["成交股數"].str.replace(',', '').astype(float)
 
 # step 2 create plot
