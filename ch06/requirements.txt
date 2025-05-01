@@ -1,0 +1,8 @@
+Flask
+python-dotenv
+selenium
+line-bot-sdk
+matplotlib
+pandas
+mplfinance
+TA-Lib

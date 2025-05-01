@@ -4,7 +4,7 @@ from time import sleep
 import pandas as pd
 import mpl_finance as mpf
 import talib
-
+import os
 all_list = []
 stock_symbol, dates = m.get_data()
 
@@ -49,4 +49,17 @@ ax2.set_xticklabels(day[::5])
 ax2.grid(True)
 
 # step 4 show plot
-plt.show()
+def runnig(save_dir="D:/k線圖片", filename="k_line_chart.png"):
+    os.makedirs(save_dir, exist_ok=True)
+
+    # 合併儲存路徑
+    save_path = os.path.join(save_dir, filename)
+
+    # 儲存圖片
+    plt.savefig(save_path, bbox_inches='tight')
+    plt.show()
+
+    return save_path
+    
+
+runnig()
